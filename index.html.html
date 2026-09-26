@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Go On A Date With Me? 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #f48caf;
+  --pink-dark: #b85a7b;
+  --pink-light: #fff0f5;
+  --lavender: #d8c7e9;
+  --lavender-dark: #786486;
+  --text: #5b4250;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "DM Sans", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.9) 0 8%, transparent 28%),
+    radial-gradient(circle at 85% 75%, rgba(255,213,228,.55), transparent 30%),
+    linear-gradient(135deg, #fff8fb 0%, #ffeef5 48%, #fff8fb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* soft decorative background */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: .55;
+  pointer-events: none;
+}
+
+.blob.one {
+  width: 170px;
+  height: 170px;
+  left: -55px;
+  top: 12%;
+  background: #ffd7e6;
+}
+
+.blob.two {
+  width: 210px;
+  height: 210px;
+  right: -85px;
+  bottom: 7%;
+  background: #eadcf3;
+}
+
+/* floating flowers/hearts */
+.decoration {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .68;
+  animation: drift 5s ease-in-out infinite;
+}
+
+.d1 { left: 7%; top: 17%; font-size: 25px; animation-delay: -.8s; }
+.d2 { left: 14%; bottom: 14%; font-size: 20px; animation-delay: -2s; }
+.d3 { right: 8%; top: 18%; font-size: 23px; animation-delay: -1.4s; }
+.d4 { right: 13%; bottom: 20%; font-size: 19px; animation-delay: -3s; }
+.d5 { left: 28%; top: 7%; font-size: 16px; animation-delay: -2.4s; }
+.d6 { right: 27%; top: 8%; font-size: 18px; animation-delay: -1s; }
+
+@keyframes drift {
+  0%,100% { transform: translate(0,0) rotate(-5deg); }
+  50% { transform: translate(8px,-15px) rotate(8deg); }
+}
+
+/* Main card */
+.card {
+  width: min(92vw, 515px);
+  min-height: 650px;
+  position: relative;
+  z-index: 10;
+  padding: 42px 30px 32px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(247,177,201,.55);
+  box-shadow:
+    0 25px 70px rgba(153, 78, 108, .13),
+    0 4px 20px rgba(153, 78, 108, .06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* inner subtle frame */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 23px;
+  border: 1px solid rgba(246,180,201,.22);
+  pointer-events: none;
+}
+
+/* content */
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Image frame */
+.photo-wrap {
+  width: 170px;
+  height: 170px;
+  padding: 6px;
+  border-radius: 34px;
+  background: linear-gradient(145deg, #ffd5e3, #f5b2c9);
+  box-shadow: 0 12px 28px rgba(160, 72, 105, .16);
+  margin-bottom: 30px;
+  animation: gentle 3.2s ease-in-out infinite;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 28px;
+  object-fit: cover;
+  background: #fff2f6;
+}
+
+@keyframes gentle {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* text */
+.eyebrow {
+  color: #d47d9b;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+}
+
+h1 {
+  margin: 0;
+  max-width: 420px;
+  color: #6e3e54;
+  font-size: clamp(29px, 7vw, 40px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -.7px;
+}
+
+h1 .heart {
+  color: #f184aa;
+  display: inline-block;
+  animation: heartbeat 1.35s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  14% { transform: scale(1.18); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.14); }
+  56% { transform: scale(1); }
+}
+
+.subtitle {
+  margin: 15px 0 30px;
+  color: #a27a8c;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* buttons */
+.buttons {
+  width: 100%;
+  min-height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  position: relative;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 29px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#yesBtn {
+  color: #fff;
+  background: linear-gradient(135deg, #f58eaf, #ec769f);
+  box-shadow: 0 9px 20px rgba(237,119,158,.28);
+}
+
+#yesBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 13px 27px rgba(237,119,158,.35);
+}
+
+#noBtn {
+  color: #685474;
+  background: #dac8e9;
+  box-shadow: 0 7px 16px rgba(117,84,137,.12);
+}
+
+#noBtn:hover {
+  transform: scale(1.03);
+}
+
+/* playful hint */
+.hint {
+  min-height: 23px;
+  margin-top: 15px;
+  color: #c2879e;
+  font-size: 12px;
+  font-weight: 600;
+  transition: opacity .2s;
+}
+
+/* Success */
+.success {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 78px;
+  animation: heartbeat 1s infinite;
+}
+
+.success h2 {
+  margin: 15px 0 8px;
+  color: #6e3e54;
+  font-size: 42px;
+}
+
+.success p {
+  margin: 0;
+  max-width: 380px;
+  color: #9b7083;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* confetti */
+.confetti {
+  position: fixed;
+  top: -30px;
+  z-index: 100;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-30px) rotate(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+
+/* Date selection */
+.success-intro {
+  margin: 0 0 20px;
+}
+
+.date-box {
+  width: min(100%, 330px);
+  margin-top: 5px;
+  padding: 19px;
+  border-radius: 22px;
+  background: #fff7fa;
+  border: 1px solid #f5d2df;
+  box-shadow: 0 8px 25px rgba(170, 85, 115, .08);
+  text-align: left;
+}
+
+.date-box label {
+  display: block;
+  margin: 9px 0 7px;
+  color: #80536a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.date-box input {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #efc6d5;
+  border-radius: 13px;
+  outline: none;
+  padding: 0 13px;
+  color: #644555;
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+}
+
+.date-box input:focus {
+  border-color: #ed8cac;
+  box-shadow: 0 0 0 3px rgba(237,140,172,.13);
+}
+
+#confirmDate {
+  width: 100%;
+  margin-top: 17px;
+  color: white;
+  background: linear-gradient(135deg, #f58eaf, #ec769f);
+  box-shadow: 0 9px 20px rgba(237,119,158,.25);
+}
+
+#confirmDate:hover {
+  transform: translateY(-2px);
+}
+
+#confirmDate:disabled {
+  opacity: .65;
+  cursor: wait;
+  transform: none !important;
+}
+
+#submitStatus {
+  min-height: 18px;
+  margin-top: 8px;
+  text-align: center;
+  color: #a66b83;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#dateError {
+  min-height: 17px;
+  margin-top: 8px;
+  text-align: center;
+  color: #c35d7f;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.final-screen {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.final-screen h2 {
+  margin: 12px 0 8px;
+  color: #6e3e54;
+  font-size: 40px;
+}
+
+.final-screen p {
+  margin: 0;
+  color: #9b7083;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.final-card {
+  width: min(100%, 330px);
+  margin: 22px 0 15px;
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff7fa, #fff);
+  border: 1px solid #f2cedc;
+  box-shadow: 0 10px 25px rgba(160,72,105,.08);
+}
+
+.final-card div {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.final-card strong,
+.final-card small {
+  display: block;
+}
+
+.final-card strong {
+  color: #75455c;
+  font-size: 16px;
+}
+
+.final-card small {
+  color: #a67c8e;
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.change-btn {
+  padding: 11px 22px;
+  color: #7c607f;
+  background: #eadff1;
+  font-size: 13px;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .card {
+    width: 94vw;
+    min-height: 590px;
+    padding: 34px 20px 28px;
+  }
+
+  .photo-wrap {
+    width: 135px;
+    height: 135px;
+    border-radius: 28px;
+    margin-bottom: 25px;
+  }
+
+  .photo {
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 29px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    padding: 13px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+<div class="decoration d1">🌸</div>
+<div class="decoration d2">🌷</div>
+<div class="decoration d3">🌸</div>
+<div class="decoration d4">💗</div>
+<div class="decoration d5">✦</div>
+<div class="decoration d6">🌸</div>
+
+<div class="card">
+
+  <div class="content">
+
+    <section id="proposal">
+
+      <!-- Replace cat.jpg with your own image -->
+      <div class="photo-wrap">
+        <img
+          class="photo"
+          src="cat.jpg"
+          alt="Cute photo"
+          onerror="this.src='https://placehold.co/500x500/fff0f5/b85a7b?text=%F0%9F%92%97'"
+        >
+      </div>
+
+      <div class="eyebrow">A little question...</div>
+
+      <h1>
+        Will you go on a date with me
+        <span class="heart">♡</span>
+      </h1>
+
+      <p class="subtitle">
+        I promise it'll be cute, fun and worth remembering. 🌷
+      </p>
+
+      <div class="buttons">
+        <button id="yesBtn">YES 💕</button>
+        <button id="noBtn">No 🥺</button>
+      </div>
+
+      <div class="hint" id="hint">
+        Choose wisely... 👀
+      </div>
+
+    </section>
+
+    <!-- STEP 2: Set the date -->
+    <section class="success" id="success">
+
+      <div class="success-icon">💖</div>
+
+      <h2>Yay! 🥰</h2>
+
+      <p class="success-intro">
+        It's officially a date!<br>
+        Now let's choose when. 🌸
+      </p>
+
+      <div class="date-box">
+
+        <label for="dateInput">📅 Pick a date</label>
+        <input type="date" id="dateInput">
+
+        <label for="timeInput">🕐 Pick a time</label>
+        <input type="time" id="timeInput">
+
+        <label for="guestName">💌 Your name <span style="font-weight:400;color:#b891a0;">(optional)</span></label>
+        <input type="text" id="guestName" placeholder="Your name">
+
+        <label for="guestEmail">📧 Your email <span style="font-weight:400;color:#b891a0;">(optional)</span></label>
+        <input type="email" id="guestEmail" placeholder="your@email.com">
+
+        <button id="confirmDate">Set Our Date 💕</button>
+
+        <div id="dateError"></div>
+        <div id="submitStatus"></div>
+      </div>
+
+    </section>
+
+    <!-- STEP 3: Final confirmation -->
+    <section class="final-screen" id="finalScreen">
+
+      <div class="success-icon">🌸</div>
+
+      <h2>Date Set! 💕</h2>
+
+      <p>
+        It's a date! 🥰<br>
+        <span id="chosenDate"></span>
+      </p>
+
+      <div class="final-card">
+        <div>💗</div>
+        <strong>Can't wait to see you!</strong>
+        <small>It's going to be a beautiful day. 🌷</small>
+      </div>
+
+      <button id="changeDate" class="change-btn">
+        Change Date
+      </button>
+
+    </section>
+
+  </div>
+</div>
+
+<script>
+/*
+  ================================
+  EMAIL SUBMISSION CONFIGURATION
+  ================================
+  1. Create a Formspree form.
+  2. Copy its endpoint, for example:
+       https://formspree.io/f/abcdwxyz
+  3. Replace YOUR_FORMSPREE_ENDPOINT below with your endpoint.
+
+  The selected date/time will then be sent to your Formspree
+  receiving email when "Set Our Date" is pressed.
+*/
+const FORMSPREE_ENDPOINT = "YOUR_FORMSPREE_ENDPOINT";
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const hint = document.getElementById("hint");
+const proposal = document.getElementById("proposal");
+const success = document.getElementById("success");
+
+let attempts = 0;
+let locked = false;
+
+/*
+  The NO button moves only after the pointer gets close.
+  This gives it the playful behavior shown in the video
+  instead of instantly teleporting away.
+*/
+function moveNoButton() {
+  if (locked) return;
+
+  attempts++;
+
+  const margin = 18;
+  const rect = noBtn.getBoundingClientRect();
+
+  const maxX = window.innerWidth - rect.width - margin;
+  const maxY = window.innerHeight - rect.height - margin;
+
+  let x;
+  let y;
+
+  // Keep the first few jumps around the card,
+  // then allow the button to escape anywhere.
+  if (attempts < 4) {
+    const card = document.querySelector(".card").getBoundingClientRect();
+
+    x = card.left + Math.random() * Math.max(1, card.width - rect.width);
+    y = card.top + Math.random() * Math.max(1, card.height - rect.height);
+  } else {
+    x = margin + Math.random() * Math.max(1, maxX - margin);
+    y = margin + Math.random() * Math.max(1, maxY - margin);
+  }
+
+  x = Math.max(margin, Math.min(x, maxX));
+  y = Math.max(margin, Math.min(y, maxY));
+
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  const messages = [
+    "Hehe, too slow 😏",
+    "Try catching me! 😂",
+    "Nope! 💕",
+    "You can't press me 🥺",
+    "Just say YES already! 🌸",
+    "I saw that! 👀"
+  ];
+
+  hint.textContent = messages[Math.min(attempts - 1, messages.length - 1)];
+}
+
+/* Desktop: escape when pointer approaches */
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+/* Touch devices */
+noBtn.addEventListener("touchstart", function(e) {
+  e.preventDefault();
+  moveNoButton();
+}, { passive: false });
+
+/* If somehow clicked */
+noBtn.addEventListener("click", function(e) {
+  e.preventDefault();
+  moveNoButton();
+});
+
+/* YES -> open date-setting step */
+yesBtn.addEventListener("click", () => {
+  locked = true;
+
+  proposal.style.display = "none";
+  noBtn.style.display = "none";
+  success.style.display = "flex";
+
+  // Default to tomorrow and a convenient evening time.
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  dateInput.value = tomorrow.toISOString().split("T")[0];
+  timeInput.value = "18:00";
+
+  celebration();
+});
+
+/* Date controls */
+const dateInput = document.getElementById("dateInput");
+const timeInput = document.getElementById("timeInput");
+const confirmDate = document.getElementById("confirmDate");
+const dateError = document.getElementById("dateError");
+const submitStatus = document.getElementById("submitStatus");
+const finalScreen = document.getElementById("finalScreen");
+const chosenDate = document.getElementById("chosenDate");
+const changeDate = document.getElementById("changeDate");
+
+/* Prevent selecting a date in the past */
+const today = new Date().toISOString().split("T")[0];
+dateInput.min = today;
+
+confirmDate.addEventListener("click", async () => {
+  if (!dateInput.value || !timeInput.value) {
+    dateError.textContent = "Please choose both a date and time 💕";
+    return;
+  }
+
+  const selected = new Date(dateInput.value + "T" + timeInput.value);
+
+  if (selected < new Date()) {
+    dateError.textContent = "Please choose a future date and time 🌸";
+    return;
+  }
+
+  if (
+    !FORMSPREE_ENDPOINT ||
+    FORMSPREE_ENDPOINT === "YOUR_FORMSPREE_ENDPOINT"
+  ) {
+    dateError.textContent = "Connect the Formspree endpoint first.";
+    submitStatus.textContent =
+      "Open the setup instructions below the download.";
+    return;
+  }
+
+  dateError.textContent = "";
+  submitStatus.textContent = "Sending your date... 💌";
+  confirmDate.disabled = true;
+  confirmDate.textContent = "Sending...";
+
+  const formattedDate = selected.toLocaleDateString(undefined, {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+
+  const formattedTime = selected.toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "2-digit"
+  });
+
+  const guestName = document.getElementById("guestName").value.trim();
+  const guestEmail = document.getElementById("guestEmail").value.trim();
+
+  const formData = new FormData();
+
+  formData.append("subject", "💕 New Date Confirmation");
+  formData.append("Date", formattedDate);
+  formData.append("Time", formattedTime);
+  formData.append("Guest Name", guestName || "Not provided");
+  formData.append("Guest Email", guestEmail || "Not provided");
+  formData.append(
+    "Message",
+    `The date invitation was accepted.
+
+Date: ${formattedDate}
+Time: ${formattedTime}
+Name: ${guestName || "Not provided"}
+Email: ${guestEmail || "Not provided"}`
+  );
+
+  if (guestEmail) {
+    formData.append("_replyto", guestEmail);
+  }
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Submission failed");
+    }
+
+    chosenDate.innerHTML =
+      `<strong>${formattedDate}</strong><br>at ${formattedTime} 🕐`;
+
+    success.style.display = "none";
+    finalScreen.style.display = "flex";
+
+    submitStatus.textContent = "";
+    confirmDate.disabled = false;
+    confirmDate.textContent = "Set Our Date 💕";
+
+    celebration();
+
+  } catch (error) {
+    dateError.textContent =
+      "We couldn't send the date. Please try again. 💗";
+    submitStatus.textContent =
+      "Check your internet connection and try again.";
+    confirmDate.disabled = false;
+    confirmDate.textContent = "Set Our Date 💕";
+  }
+});
+
+/* Allow changing the selected date */
+changeDate.addEventListener("click", () => {
+  finalScreen.style.display = "none";
+  success.style.display = "flex";
+});
+
+/* celebration */
+function celebration() {
+  const symbols = ["💗", "💕", "💖", "🌸", "🌷", "✨", "💐"];
+
+  for (let i = 0; i < 45; i++) {
+    const item = document.createElement("div");
+
+    item.className = "confetti";
+    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (15 + Math.random() * 18) + "px";
+    item.style.animationDuration = (2.8 + Math.random() * 3) + "s";
+    item.style.animationDelay = (Math.random() * .8) + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 6500);
+  }
+}
+
+/* Keep a runaway NO button inside the screen after resizing */
+window.addEventListener("resize", () => {
+  if (noBtn.style.position === "fixed") {
+    const r = noBtn.getBoundingClientRect();
+
+    const x = Math.min(r.left, window.innerWidth - r.width - 10);
+    const y = Math.min(r.top, window.innerHeight - r.height - 10);
+
+    noBtn.style.left = Math.max(10, x) + "px";
+    noBtn.style.top = Math.max(10, y) + "px";
+  }
+});
+</script>
+
+
+<!--
+========================================
+FORM SUBMISSION SETUP
+========================================
+
+This page uses Formspree.
+
+1. Go to https://formspree.io/
+2. Create an account.
+3. Create a new form.
+4. Set the destination email to the email where you
+   want to receive the selected date.
+5. Copy the form endpoint, for example:
+   https://formspree.io/f/abcdwxyz
+6. Find this line in the JavaScript:
+
+   const FORMSPREE_ENDPOINT = "YOUR_FORMSPREE_ENDPOINT";
+
+7. Replace YOUR_FORMSPREE_ENDPOINT with your endpoint.
+
+Do NOT put your personal email address in the JavaScript.
+Formspree handles delivery to your receiving email.
+
+The page submits:
+- Selected date
+- Selected time
+- Guest name (if entered)
+- Guest email (if entered)
+========================================
+-->
+
+</body>
+</html>
