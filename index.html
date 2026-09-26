@@ -542,12 +542,12 @@ button {
 
         <label for="timeInput">🕐 Pick a time</label>
         <input type="time" id="timeInput">
+        
+        <label for="guestName">💌 Your name</label>
+        <input type="text" id="guestName" placeholder="Your name" required>
 
-        <label for="guestName">💌 Your name <span style="font-weight:400;color:#b891a0;">(optional)</span></label>
-        <input type="text" id="guestName" placeholder="Your name">
-
-        <label for="guestEmail">📧 Your email <span style="font-weight:400;color:#b891a0;">(optional)</span></label>
-        <input type="email" id="guestEmail" placeholder="your@email.com">
+        <label for="guestEmail">📧 Your email</label>
+        <input type="email" id="guestEmail" placeholder="your@email.com" required>
 
         <button id="confirmDate">Set Our Date 💕</button>
 
@@ -753,8 +753,8 @@ confirmDate.addEventListener("click", async () => {
   formData.append("subject", "💕 New Date Confirmation");
   formData.append("Date", formattedDate);
   formData.append("Time", formattedTime);
-  formData.append("Guest Name", guestName || "Not provided");
-  formData.append("Guest Email", guestEmail || "Not provided");
+  formData.append("Guest Name", guestName);
+formData.append("Guest Email", guestEmail);
   formData.append(
     "Message",
     `The date invitation was accepted.
@@ -765,9 +765,7 @@ Name: ${guestName || "Not provided"}
 Email: ${guestEmail || "Not provided"}`
   );
 
-  if (guestEmail) {
-    formData.append("_replyto", guestEmail);
-  }
+  formData.append("_replyto", guestEmail);
 
   try {
     const response = await fetch(FORMSPREE_ENDPOINT, {
